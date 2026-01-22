@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h3 id="currentResult"></h3>
+   <input type="text" placeholder="input salary" id="salaryInput">
+   <button id="" onclick="updateSalary()">update</button>
+   <p id="result"></p>
+    <script>
+       let employee = {
+        name: "Hasan",
+        salary: 28000
+        };
+        document.getElementById("currentResult").innerText=employee.name+" = "+employee.salary;
+        function updateSalary(){
+            let result=document.getElementById("result");
+            let updateSalary=document.getElementById("salaryInput").value;
+            if(updateSalary === ""){
+                result.innerText="pls input salary";
+                return;
+            }
+            result.innerText=Number(updateSalary);
+            //update salary
+            document.getElementById("currentResult").innerText=employee.name+" = "+updateSalary;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <input type="text" placeholder="name" id="text">
+   <button type="button" onclick="myFun()">Search</button>
+   <p id="result"></p>
+   
+    <script>
+       let employee=[
+        {name:"nimur",salary:2000},
+        {name:"Rana",salary:3000},
+        {name:"saddam",salary:5000},
+       ];
+    function myFun(){
+        let text=document.getElementById("text").value;
+        let message=employee.find(e=>{
+          return  e.name===text;
+        })
+        document.getElementById("result").innerText=
+        message? message.name+ " found":"not found";
+    }
+    </script>
+</body>
+</html>
