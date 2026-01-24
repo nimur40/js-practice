@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <h3 id="empInfo"></h3>
+
+        <input type="text" id="empName" placeholder="Employee name">
+        <button onclick="loadEmployee()">Load Employee</button>
+
+        <hr>
+
+        <input type="number" id="bonus" placeholder="Bonus amount">
+        <button onclick="addBonus()">Add Bonus</button>
+
+        <br><br>
+
+        <input type="number" id="leave" placeholder="Leave days">
+        <button onclick="addLeave()">Add Leave</button>
+
+        <br><br>
+
+        <button onclick="resetData()">Reset Employee Data</button>
+
+        <p id="result"></p>
+
+    
+    <script>
+        // 🔸 Employee list (array of objects)
+            let employees = [
+            { name: "Nimur", salary: 30000, bonus: 0, leave: 0 },
+            { name: "Rana", salary: 40000, bonus: 0, leave: 0 },
+            { name: "Saddam", salary: 50000, bonus: 0, leave: 0 }
+            ];
+
+            // 🔸 current selected employee
+            let currentEmployee = null;
+
+            /* ===============================
+            Utility functions
+            ================================ */
+
+            // show employee info in DOM
+            function showEmployeeInfo() {
+            if (!currentEmployee) return;
+
+            document.getElementById("empInfo").innerText =
+                `Name: ${currentEmployee.name}
+            Salary: ${currentEmployee.salary}
+            Bonus: ${currentEmployee.bonus}
+            Total: ${currentEmployee.bonus+currentEmployee.salary}
+
+            Leave: ${currentEmployee.leave}`;
+            
+            }
+
+            // find employee by name
+            function findEmployee(name) {
+            return employees.find(
+                e => e.name.toLowerCase() === name.toLowerCase()
+            );
+            }
+
+            /* ===============================
+            Action functions
+            ================================ */
+
+            // load employee
+            function loadEmployee() {
+            let name = document.getElementById("empName").value;
+
+            currentEmployee = findEmployee(name);
+
+            if (!currentEmployee) {
+                document.getElementById("result").innerText = "Employee not found";
+                return;
+            }
+
+            showEmployeeInfo();
+            document.getElementById("result").innerText = "Employee loaded";
+            }
+
+            // add bonus
+            function addBonus() {
+            if (!currentEmployee) {
+                alert("Load employee first");
+                return;
+            }
+
+            let value = Number(document.getElementById("bonus").value);
+            currentEmployee.bonus += value;
+
+            showEmployeeInfo();
+            document.getElementById("result").innerText = "Bonus added";
+            }
+
+            // add leave
+            function addLeave() {
+            if (!currentEmployee) {
+                alert("Load employee first");
+                return;
+            }
+
+            let value = Number(document.getElementById("leave").value);
+            currentEmployee.leave += value;
+
+            showEmployeeInfo();
+            document.getElementById("result").innerText = "Leave updated";
+            }
+
+            // reset employee data
+            function resetData() {
+            if (!currentEmployee) return;
+
+            currentEmployee.bonus = 0;
+            currentEmployee.leave = 0;
+
+            showEmployeeInfo();
+            document.getElementById("result").innerText = "Employee data reset";
+            }
+
+
+    </script>
+</body>
+</html>

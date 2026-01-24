@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3 id="currentSalary"></h3>
+    <input type="text" placeholder="input salary" id="inputSalary">
+    <button id="" onclick="salaryUpdate()">Update</button><br>
+    <input type="text" placeholder="addintion salary" id="inputSalary">
+    <button id="" onclick="">Addition</button>
+    <p id="result"></p>
+   
+    <script>
+        let employee={
+            name:"Nimur",
+            salary:"5000"
+        }
+        document.getElementById("currentSalary").innerText=employee.name+" is runing salary is "+employee.salary;
+        function salaryUpdate(){
+            let lastUpdateSalary=document.getElementById("inputSalary").value;
+            if(lastUpdateSalary===""){
+                alert("pls input salary");
+                return;
+            }
+            document.getElementById("currentSalary").innerText="Now Runng salary is ="+lastUpdateSalary;
+            document.getElementById("result").innerText="Now Salary Updateed";
+            document.getElementById("inputSalary").value="";
+
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3 id="currentSalary"></h3>
+    <input type="text" placeholder="" id="inputSalary">
+    <button onclick="updateSalary()">Update Salary</button>
+    <br><br>
+    <input type="text" placeholder="" id="addSalary">
+    <button onclick="addSalary()">Addition Salary</button>
+    <br><br>
+    <input type="text" placeholder="" id="deducSalary">
+    <button onclick="deducSalary()">Deduction Salary</button>
+    <br><br>
+    <button onclick="reset()">Reset Salary</button>
+    <p id="result"></p>
+    <script>
+        let employee={
+            name:"nimur",
+            salary:1000
+        }
+        function showSalary(){
+            document.getElementById("currentSalary").innerText=
+            employee.name+" is runing salary ="+employee.salary;
+        }
+        showSalary();
+        function updateSalary(){
+            let inputSalary=document.getElementById("inputSalary").value;
+            if(inputSalary===""){
+                alert("Pls input salary");
+                return;
+            }
+            employee.salary=Number(inputSalary);
+            showSalary();
+            document.getElementById("result").innerText="Salary updated successfully";
+            document.getElementById("result").style.color="green";
+            document.getElementById("inputSalary").value="";
+        }
+        function addSalary(){
+            let addSalary=document.getElementById("addSalary").value;
+            if(addSalary===""){
+                alert("pls add salary");
+                return;
+            }
+            employee.salary +=Number(addSalary);
+            showSalary();
+            document.getElementById("result").innerText="Salary added successfully";
+            document.getElementById("result").style.color="green";
+            document.getElementById("addSalary").value="";
+        }
+        function deducSalary(){
+            let deducSalary=document.getElementById("deducSalary").value;
+            if(deducSalary===""){
+                alrt("pls input duduc salaru");
+                return;
+            }
+            employee.salary -=Number(deducSalary);
+            showSalary();
+            document.getElementById("result").innerText="Salary deduc successfully";
+            document.getElementById("result").style.color="green";
+            document.getElementById("deducSalary").value="";
+
+        }
+        function reset(){
+            employee.salary=0;
+            showSalary();
+        }
+
+
+
+    </script>
+</body>
+
+</html>
